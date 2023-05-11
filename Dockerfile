@@ -21,5 +21,5 @@ EXPOSE 389 636
 
 CMD /usr/sbin/slapd -h "ldap:/// ldapi:///" \
     -u openldap -g openldap \
-    -f /etc/ldap/slapd-local.conf \
+    -f /etc/ldap/SITE-slapd.conf \
     -d sync 2>&1
