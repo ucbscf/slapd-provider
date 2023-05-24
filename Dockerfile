@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
+        ca-certificates \
+        ssl-cert \
         slapd \
         slapd-contrib \
         ldap-utils \
@@ -16,6 +18,8 @@ RUN apt-get update && \
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN usermod -G ssl-cert openldap
 
 EXPOSE 389 636
 
