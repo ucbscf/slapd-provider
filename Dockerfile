@@ -1,7 +1,11 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ENV DEBIAN_PRIORITY=high
 ENV DEBIAN_FRONTEND=noninteractive
+
+RUN groupadd -r -g 509 ssl-cert
+RUN groupadd -r -g 389 openldap && \
+    useradd -r -u 389 -g 389 -d /var/lib/ldap -s /bin/false openldap
 
 RUN apt-get update && \
     apt-get upgrade -y && \
