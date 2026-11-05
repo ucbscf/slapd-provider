@@ -27,7 +27,6 @@ RUN usermod -G ssl-cert openldap
 
 EXPOSE 389 636
 
-CMD /usr/sbin/slapd -h "ldap:/// ldaps:/// ldapi:///" \
-    -u openldap -g openldap \
-    -f /etc/ldap/SITE-slapd.conf \
-    -d sync 2>&1
+CMD ["/usr/sbin/slapd", "-h", "ldap:/// ldaps:/// ldapi:///", \
+     "-u", "openldap", "-g", "openldap", \
+     "-f", "/etc/ldap/SITE-slapd.conf", "-d", "sync"]
